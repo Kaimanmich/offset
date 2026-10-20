@@ -1,0 +1,125 @@
+.intro {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(96px, 12vw, 200px);
+}
+
+.statement {
+  margin-top: clamp(40px, 5vw, 88px);
+  text-indent: 25%;
+  font-size: clamp(30px, 4.6vw, 92px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.042em;
+}
+
+.strong {
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: -0.05em;
+}
+
+.cond {
+  font-weight: 300;
+  font-stretch: 62%;
+  letter-spacing: -0.02em;
+}
+
+.mark {
+  position: relative;
+  font-weight: 600;
+}
+
+.underline {
+  position: absolute;
+  left: 0;
+  right: 0.25em;
+  bottom: 0.04em;
+  height: 0.06em;
+  background: var(--c-accent);
+  transform-origin: left center;
+}
+
+.off {
+  font-weight: 500;
+}
+
+.below {
+  margin-top: clamp(64px, 8vw, 140px);
+  align-items: start;
+}
+
+.figure {
+  grid-column: 1 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Hangs below the section edge into the marquee band. */
+  margin-bottom: calc(-1 * clamp(80px, 10vw, 180px));
+  position: relative;
+  z-index: 3;
+}
+
+.copy {
+  grid-column: 7 / span 5;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding-top: var(--s-7);
+}
+
+.copy :global(.t-lead) {
+  max-width: 34ch;
+}
+
+.disciplines {
+  border-top: 1px solid var(--c-line);
+}
+
+.disciplines li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding-block: 14px;
+  border-bottom: 1px solid var(--c-line);
+  font-size: clamp(18px, 1.3vw, 22px);
+  letter-spacing: -0.01em;
+  transition: padding 0.5s var(--ease-out), color 0.3s ease;
+}
+
+.disciplines li:hover {
+  padding-left: 12px;
+}
+
+@media (max-width: 900px) {
+  .figure {
+    grid-column: 1 / span 7;
+  }
+  .copy {
+    grid-column: 3 / -1;
+    padding-top: var(--s-6);
+    order: -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .statement {
+    text-indent: 18%;
+  }
+  .figure {
+    grid-column: 1 / span 10;
+  }
+  .copy {
+    grid-column: 1 / -1;
+    padding-top: 0;
+    margin-bottom: var(--s-6);
+  }
+}
+
+.talk {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  align-self: flex-start;
+}

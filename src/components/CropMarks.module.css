@@ -1,0 +1,54 @@
+/* Each corner is a zero-size anchor; its two arms extend outward past a small gap. */
+.marks {
+  position: absolute;
+  inset: var(--inset, 0);
+  pointer-events: none;
+  --len: 14px;
+  --gapc: 6px;
+}
+
+.marks > span {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.marks > span::before,
+.marks > span::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.marks > span::before {
+  width: var(--len);
+  height: 1px;
+}
+
+.marks > span::after {
+  width: 1px;
+  height: var(--len);
+}
+
+.tl { top: 0; left: 0; }
+.tr { top: 0; right: 0; }
+.bl { bottom: 0; left: 0; }
+.br { bottom: 0; right: 0; }
+
+.tl::before { top: 0; right: var(--gapc); }
+.tl::after { left: 0; bottom: var(--gapc); }
+.tr::before { top: 0; left: var(--gapc); }
+.tr::after { right: 0; bottom: var(--gapc); }
+.bl::before { bottom: 0; right: var(--gapc); }
+.bl::after { left: 0; top: var(--gapc); }
+.br::before { bottom: 0; left: var(--gapc); }
+.br::after { right: 0; top: var(--gapc); }
+
+/* Keep the arms inside the page gutter on phones, or they widen the mobile layout viewport. */
+@media (max-width: 720px) {
+  .marks {
+    --len: 8px;
+    --gapc: 4px;
+  }
+}

@@ -1,0 +1,247 @@
+/* ============================================================================
+   OFFSET — global tokens, reset and layout primitives.
+   ui-kit components read the --uikit-* tokens; everything site-specific
+   reads the short tokens below.
+   ========================================================================== */
+
+:root {
+  /* Palette — 60 near-black / 30 warm white / 10 accent (details only). */
+  --c-black: #0b0b0b;
+  --c-off: #111111;
+  --c-raise: #161616;
+  --c-white: #f4f3ef;
+  --c-pure: #ffffff;
+  --c-gray: #8c8c88; /* 5.9:1 on --c-black */
+  --c-gray-ink: #5c5c58; /* 6.2:1 on --c-white — muted text on light sections */
+  --c-accent: #c8ff3d;
+  --c-line: rgba(244, 243, 239, 0.12);
+  --c-line-strong: rgba(244, 243, 239, 0.28);
+  --c-line-ink: rgba(11, 11, 11, 0.14);
+
+  /* Type */
+  --f-display: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+  --f-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  /* Space — 8px base */
+  --s-1: 8px;
+  --s-2: 16px;
+  --s-3: 24px;
+  --s-4: 32px;
+  --s-5: 48px;
+  --s-6: 64px;
+  --s-7: 96px;
+  --s-8: 128px;
+  --s-9: 192px;
+  --gutter: clamp(16px, 3.4vw, 56px);
+  --gap: clamp(12px, 1.6vw, 24px);
+  --nav-h: 72px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-io: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* ui-kit reskin */
+  --uikit-color-bg: var(--c-black);
+  --uikit-color-surface: var(--c-off);
+  --uikit-color-text: var(--c-white);
+  --uikit-color-text-dim: var(--c-gray);
+  --uikit-color-accent: var(--c-accent);
+  --uikit-color-border: var(--c-line);
+  --uikit-font-display: var(--f-display);
+  --uikit-font-body: var(--f-display);
+  --uikit-font-mono: var(--f-mono);
+  --uikit-gutter: var(--gutter);
+  --uikit-container-max: 1680px;
+  --uikit-radius: 0;
+  --uikit-ease: var(--ease-out);
+  --uikit-cursor-size: 8px;
+  --uikit-cursor-hover-size: 40px;
+  --uikit-cursor-label-size: 82px;
+  --uikit-cursor-color: var(--c-white);
+  --uikit-cursor-label-bg: var(--c-accent);
+  --uikit-cursor-label-color: var(--c-black);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--nav-h) + var(--s-3));
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--c-black);
+  color: var(--c-white);
+  font-family: var(--f-display);
+  font-size: 16px;
+  line-height: 1.55;
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--c-accent);
+  color: var(--c-black);
+}
+
+/* Focus: a hard accent outline, offset — never removed, only replaced. */
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 4px;
+}
+
+.light :focus-visible {
+  outline-color: var(--c-black);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--s-2);
+  left: var(--s-2);
+  z-index: 1000;
+  padding: var(--s-1) var(--s-2);
+  background: var(--c-accent);
+  color: var(--c-black);
+  font-family: var(--f-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transform: translateY(-200%);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ---- Layout primitives ---------------------------------------------------- */
+
+.shell {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+}
+
+.light {
+  background: var(--c-white);
+  color: var(--c-black);
+  --c-line: var(--c-line-ink);
+  --uikit-color-text-dim: var(--c-gray-ink);
+}
+
+main {
+  display: block;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* ---- Photo treatment ------------------------------------------------------ */
+
+.photo img {
+  filter: grayscale(1) contrast(1.12) brightness(0.92);
+}
+
+/* ---- Global grain --------------------------------------------------------- */
+
+/* The frame clips the oversized, moving grain to the screen; without it the layer widens
+   the mobile layout viewport and the page can be nudged sideways. */
+.grain-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.grain {
+  position: absolute;
+  inset: -50%;
+  will-change: transform;
+  animation: grain 0.9s steps(5) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -4%); }
+  60% { transform: translate(-4%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}

@@ -1,0 +1,21 @@
+.logo {
+  display: inline-flex;
+  align-items: flex-start;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 112%;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.set {
+  display: inline-block;
+  transform: translate(0.08em, 0.26em);
+  transition: transform 0.6s var(--ease-out);
+}
+
+a:hover .set,
+a:focus-visible .set {
+  transform: translate(0, 0);
+}

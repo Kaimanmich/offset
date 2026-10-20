@@ -1,0 +1,104 @@
+/* ============================================================================
+   Typography — one variable grotesk (Archivo, width 62–125) carries display
+   and body; Geist Mono carries metadata. Text scale ratio 1.333.
+   ========================================================================== */
+
+/* Tiny technical labels: 11–12px mono, uppercase. */
+.t-mono {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 900px) {
+  .t-mono {
+    font-size: 12px;
+  }
+}
+
+.t-dim {
+  color: var(--c-gray);
+}
+
+.light .t-dim {
+  color: var(--c-gray-ink);
+}
+
+/* Body 16 → lead 21.3 → 28.4 → 37.9 → 50.5 */
+.t-body {
+  font-size: 16px;
+  line-height: 1.6;
+  font-stretch: 100%;
+}
+
+.t-lead {
+  font-size: clamp(18px, 1.1vw + 10px, 21.33px);
+  line-height: 1.45;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.t-h4 {
+  font-size: clamp(22px, 1.2vw + 12px, 28.4px);
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.t-h3 {
+  font-size: clamp(28px, 2.2vw + 10px, 50.5px);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+/* Display — sized to the viewport, tracked tight. */
+.t-display {
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.t-condensed {
+  font-stretch: 62%;
+}
+
+.t-narrow {
+  font-stretch: 75%;
+}
+
+.t-wide {
+  font-stretch: 125%;
+}
+
+.t-upper {
+  text-transform: uppercase;
+}
+
+.t-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px currentColor;
+}
+
+@supports not (-webkit-text-stroke: 1px black) {
+  .t-outline {
+    color: inherit;
+    opacity: 0.35;
+  }
+}
+
+.t-balance {
+  text-wrap: balance;
+}
+
+.t-pretty {
+  text-wrap: pretty;
+}
+
+.t-tabular {
+  font-variant-numeric: tabular-nums;
+}

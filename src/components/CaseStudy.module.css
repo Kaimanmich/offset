@@ -1,0 +1,128 @@
+.case {
+  position: relative;
+  padding-block: clamp(80px, 9vw, 160px);
+  border-top: 1px solid var(--c-line);
+}
+
+.head {
+  margin-top: clamp(32px, 4vw, 64px);
+  margin-bottom: clamp(32px, 4vw, 64px);
+  align-items: end;
+  row-gap: var(--s-4);
+}
+
+.title {
+  grid-column: 1 / span 8;
+  font-size: clamp(52px, 8.2vw, 160px);
+  font-weight: 800;
+}
+
+/* "— Concept" is part of the title, set as an outline and pushed off the left edge. */
+.tag {
+  padding-left: 1.2em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(244, 243, 239, 0.75);
+}
+
+.summary {
+  grid-column: 9 / span 4;
+  max-width: 32ch;
+}
+
+.coverLink {
+  display: block;
+  position: relative;
+}
+
+.coverLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--c-accent);
+  opacity: 0;
+  transform: translate(10px, 10px);
+  transition: opacity 0.4s ease, transform 0.7s var(--ease-out);
+  pointer-events: none;
+}
+
+.coverLink:hover::after,
+.coverLink:focus-visible::after {
+  opacity: 1;
+  transform: translate(14px, 14px);
+}
+
+.body {
+  margin-top: clamp(48px, 6vw, 96px);
+  align-items: start;
+  row-gap: var(--s-5);
+}
+
+.facts {
+  grid-column: 1 / span 4;
+  margin: 0;
+  border-top: 1px solid var(--c-line);
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: var(--s-2);
+  padding-block: 14px;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.facts dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.text {
+  grid-column: 6 / span 6;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.lead {
+  font-size: clamp(20px, 1.7vw, 28px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+}
+
+.demoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+}
+
+@media (max-width: 900px) {
+  .title,
+  .summary,
+  .facts,
+  .text {
+    grid-column: 1 / -1;
+  }
+  .text {
+    order: -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .tag {
+    padding-left: 0.5em;
+  }
+  .facts > div {
+    grid-template-columns: 96px 1fr;
+  }
+}

@@ -1,0 +1,94 @@
+@property --reach {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 22%;
+}
+
+.slot {
+  --mx: 50%;
+  --my: 50%;
+  --reach: 22%;
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--c-line-strong);
+  background: var(--c-off);
+  overflow: visible;
+  color: var(--c-white);
+  transition: border-color 0.5s var(--ease-out), background-color 0.5s var(--ease-out), --reach 0.7s var(--ease-out);
+}
+
+.slot:hover {
+  --reach: 38%;
+  border-color: rgba(244, 243, 239, 0.5);
+  background: var(--c-raise);
+}
+
+.hatch {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(135deg, rgba(244, 243, 239, 0.22) 0 1px, transparent 1px 9px);
+  mask-image: radial-gradient(circle at var(--mx) var(--my), #000 0, transparent var(--reach));
+  -webkit-mask-image: radial-gradient(circle at var(--mx) var(--my), #000 0, transparent var(--reach));
+}
+
+.scan {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.scan::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 0, transparent calc(100% - 1px), rgba(244, 243, 239, 0.28) calc(100% - 1px));
+  animation: scan 7s linear infinite;
+}
+
+.numeral {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(64px, 9vw, 160px);
+  font-weight: 800;
+  font-stretch: 62%;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(244, 243, 239, 0.3);
+  transition: -webkit-text-stroke-color 0.5s ease, transform 0.8s var(--ease-out);
+}
+
+.slot:hover .numeral {
+  -webkit-text-stroke-color: rgba(244, 243, 239, 0.7);
+  transform: translate(calc(-50% + 6px), calc(-50% - 6px));
+}
+
+.tl,
+.tr,
+.bl,
+.br {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tl {
+  top: 14px;
+  left: 14px;
+}
+.tr {
+  top: 14px;
+  right: 14px;
+}
+.bl {
+  bottom: 14px;
+  left: 14px;
+}
+.br {
+  bottom: 14px;
+  right: 14px;
+}

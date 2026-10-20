@@ -1,0 +1,139 @@
+.footer {
+  position: relative;
+  padding-top: var(--s-7);
+  padding-bottom: var(--s-3);
+  border-top: 1px solid var(--c-line);
+  background: var(--c-black);
+}
+
+.top {
+  row-gap: var(--s-5);
+  padding-bottom: var(--s-7);
+}
+
+.brand {
+  grid-column: 1 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.col {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.index {
+  grid-column: 6 / span 2;
+}
+
+.col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.company address {
+  font-style: normal;
+}
+
+.contact {
+  grid-column: 10 / span 3;
+  align-items: flex-start;
+}
+
+.mail {
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-4);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--c-line);
+}
+
+.coords {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  transition: color 0.3s ease;
+}
+
+.top_btn:hover {
+  color: var(--c-accent);
+}
+
+@media (max-width: 900px) {
+  .brand {
+    grid-column: 1 / -1;
+  }
+  .col,
+  .index {
+    grid-column: span 6;
+  }
+  .contact {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .coords {
+    display: none;
+  }
+}
+
+.footCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: var(--s-1);
+  padding: 0 var(--s-2);
+  border: 1px solid var(--c-line-strong);
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+}
+
+.footCta:hover,
+.footCta:focus-visible {
+  background: var(--c-white);
+  color: var(--c-black);
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-3);
+}
+
+/* Links and the settings button share one height so they sit on one line. */
+.legal a,
+.legal button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+}

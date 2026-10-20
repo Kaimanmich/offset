@@ -1,0 +1,41 @@
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  width: 100%;
+}
+
+.index {
+  flex-shrink: 0;
+  color: var(--c-accent);
+}
+
+:global(.light) .index {
+  color: inherit;
+}
+
+.label {
+  flex-shrink: 0;
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  background: var(--c-line-strong);
+  transform-origin: left center;
+}
+
+:global(.light) .rule {
+  background: var(--c-line-ink);
+}
+
+.aside {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .aside {
+    display: none;
+  }
+}

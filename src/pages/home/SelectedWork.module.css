@@ -1,0 +1,104 @@
+.work {
+  position: relative;
+  padding-block: clamp(96px, 11vw, 200px);
+}
+
+.top {
+  margin-top: clamp(40px, 5vw, 80px);
+  align-items: end;
+  row-gap: var(--s-5);
+}
+
+.title {
+  grid-column: 1 / -1;
+  font-size: clamp(80px, 15vw, 290px);
+  font-weight: 800;
+  line-height: 0.8;
+}
+
+.soon {
+  padding-left: 1.4em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(244, 243, 239, 0.7);
+}
+
+.side {
+  grid-column: 8 / span 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding-bottom: 1.4vw;
+}
+
+.allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+/* Four cards in two offset pairs: the right-hand card always drops a step. */
+.cards {
+  margin-top: clamp(64px, 8vw, 140px);
+  align-items: start;
+  row-gap: var(--s-6);
+}
+
+.card0,
+.card2 {
+  grid-column: 1 / span 6;
+}
+
+.card1,
+.card3 {
+  grid-column: 7 / span 6;
+  margin-top: clamp(64px, 9vw, 160px);
+}
+
+.card2 {
+  margin-left: 8%;
+}
+
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: clamp(64px, 8vw, 128px);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--c-line);
+}
+
+.next :global(.status-dot) {
+  margin-right: 8px;
+}
+
+@media (max-width: 900px) {
+  .title {
+    grid-column: 1 / -1;
+  }
+  .side {
+    grid-column: 1 / span 9;
+  }
+  .card0,
+  .card2 {
+    grid-column: 1 / span 11;
+    margin-left: 0;
+  }
+  .card1,
+  .card3 {
+    grid-column: 2 / -1;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .soon {
+    padding-left: 0.5em;
+  }
+  .side {
+    grid-column: 1 / -1;
+  }
+}

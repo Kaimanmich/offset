@@ -1,0 +1,273 @@
+/* ui-kit Navbar paints its solid state with --uikit-color-bg; scope a
+   translucent value to the header so it reads as tinted glass, not a slab. */
+.nav {
+  --uikit-color-bg: rgba(11, 11, 11, 0.72);
+  --uikit-color-border: var(--c-line);
+  height: var(--nav-h);
+  padding-inline: var(--gutter);
+  transition: background-color 0.5s var(--ease-out), border-color 0.5s var(--ease-out), color 0.5s var(--ease-out);
+}
+
+/* Paper tone — swapped in while a .light section runs under the bar. */
+.onLight {
+  --uikit-color-bg: rgba(244, 243, 239, 0.84);
+  --uikit-color-border: rgba(11, 11, 11, 0.1);
+  --c-line-strong: rgba(11, 11, 11, 0.28);
+  --c-gray: var(--c-gray-ink);
+  color: var(--c-black);
+}
+
+.onLight .active .num,
+.onLight .active::before {
+  color: var(--c-black);
+}
+
+.onLight .active::before {
+  background: var(--c-black);
+}
+
+.onLight .cta:hover,
+.onLight .cta:focus-visible {
+  background: var(--c-black);
+  color: var(--c-white);
+  border-color: var(--c-black);
+}
+
+.onLight :focus-visible {
+  outline-color: var(--c-black);
+}
+
+.inner {
+  width: 100%;
+  align-items: center;
+}
+
+.logo {
+  grid-column: 1 / span 2;
+  justify-self: start;
+  padding-block: var(--s-1);
+}
+
+.links {
+  grid-column: 4 / span 5;
+}
+
+.links ul {
+  display: flex;
+  gap: clamp(20px, 2.6vw, 44px);
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding-block: var(--s-1);
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: 110%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.num {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--c-gray);
+  transition: color 0.3s ease;
+}
+
+.linkText {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 0 1px;
+  transition: background-size 0.5s var(--ease-out);
+}
+
+.link:hover .linkText,
+.link:focus-visible .linkText {
+  background-position: 0 100%;
+  background-size: 100% 1px;
+}
+
+.active .num {
+  color: var(--c-accent);
+}
+
+.active::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  background: var(--c-accent);
+  transform: translateY(-50%);
+}
+
+.time {
+  grid-column: 9 / span 2;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.ctaWrap {
+  grid-column: 11 / span 2;
+  justify-self: end;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 var(--s-2);
+  border: 1px solid var(--c-line-strong);
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: var(--c-white);
+  color: var(--c-black);
+  border-color: var(--c-white);
+}
+
+.ctaDot {
+  width: 6px;
+  height: 6px;
+  background: var(--c-accent);
+}
+
+.menuButton {
+  display: none;
+  grid-column: 9 / span 4;
+  justify-self: end;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding-inline: 4px;
+}
+
+.menuGlyph {
+  position: relative;
+  width: 18px;
+  height: 7px;
+  border-block: 1px solid currentColor;
+}
+
+.menuGlyph::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: -4px;
+  top: 2px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+}
+
+@media (max-width: 1100px) {
+  .time {
+    display: none;
+  }
+  .links {
+    grid-column: 3 / span 6;
+  }
+  .ctaWrap {
+    grid-column: 9 / span 4;
+  }
+}
+
+@media (max-width: 820px) {
+  .links {
+    display: none;
+  }
+  /* Magnetic sets display inline; the override has to win over a style attribute. */
+  .ctaWrap {
+    display: none !important;
+  }
+  .logo {
+    grid-column: 1 / span 6;
+  }
+  .menuButton {
+    display: inline-flex;
+  }
+}
+
+/* ---- Mobile overlay ------------------------------------------------------ */
+
+.menu {
+  align-items: stretch !important;
+  justify-content: space-between !important;
+  padding: calc(var(--nav-h) + var(--s-3)) var(--gutter) calc(var(--s-4) + env(safe-area-inset-bottom));
+  background: var(--c-black);
+}
+
+.menuTop {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--c-line);
+}
+
+.menuList li {
+  overflow: hidden;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.menuList li:nth-child(even) {
+  padding-left: 12vw;
+}
+
+.menuLink {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  padding-block: 10px;
+  font-size: clamp(44px, 15vw, 88px);
+  font-weight: 700;
+  font-stretch: 75%;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.menuLink :global(.t-mono) {
+  color: var(--c-gray);
+  letter-spacing: 0.06em;
+}
+
+.menuActive :global(.t-mono) {
+  color: var(--c-accent);
+}
+
+.menuFoot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.menuMail {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.menuCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding-inline: var(--s-3);
+  background: var(--c-white);
+  color: var(--c-black);
+  font-size: 12px;
+}

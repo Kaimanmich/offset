@@ -1,0 +1,243 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3vw, 44px);
+}
+
+.req {
+  text-align: right;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 3vw, 44px) var(--gap);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.star {
+  color: var(--c-accent);
+}
+
+.field:focus-within .label {
+  color: var(--c-accent);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 0 14px;
+  border: 0;
+  border-bottom: 1px solid var(--c-line-strong);
+  border-radius: 0;
+  background: transparent;
+  font-size: clamp(20px, 1.8vw, 28px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  transition: border-color 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 150px;
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.45;
+}
+
+.field textarea::placeholder {
+  color: var(--c-gray);
+  opacity: 0.8;
+}
+
+.field select {
+  padding-right: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23F4F3EF' stroke-width='1.5'%3E%3Cpath d='M4 8l8 8 8-8'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+}
+
+.field select option {
+  background: var(--c-off);
+  color: var(--c-white);
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-bottom-color: rgba(244, 243, 239, 0.55);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--c-accent);
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  box-shadow: 0 1px 0 0 var(--c-accent);
+}
+
+.invalid input,
+.invalid textarea {
+  border-bottom-color: #ff7a6b;
+}
+
+.error {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: #ff9b8f;
+}
+
+.error::before {
+  content: '↳ ';
+}
+
+/* ---- Budget chips -------------------------------------------------------- */
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.fieldset .label {
+  margin-bottom: 14px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  position: relative;
+}
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--c-line-strong);
+  font-size: 15px;
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out), border-color 0.35s ease;
+}
+
+.chip:hover span {
+  border-color: var(--c-white);
+}
+
+.chip input:checked + span {
+  background: var(--c-white);
+  color: var(--c-black);
+  border-color: var(--c-white);
+}
+
+.chip input:focus-visible + span {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+}
+
+/* ---- Submit -------------------------------------------------------------- */
+
+.submitRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-4);
+  padding-top: var(--s-2);
+}
+
+.submitNote {
+  max-width: 40ch;
+}
+
+/* ---- Sent state ---------------------------------------------------------- */
+
+.sent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: clamp(28px, 4vw, 56px);
+  border: 1px solid var(--c-line-strong);
+}
+
+.sent :global(.status-dot) {
+  margin-right: 8px;
+}
+
+.sentTitle {
+  font-size: clamp(28px, 3vw, 52px);
+  font-weight: 600;
+  font-stretch: 85%;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  max-width: 18ch;
+}
+
+.sentText {
+  max-width: 48ch;
+}
+
+.sentActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+
+.textBtn {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--c-line-strong);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.textBtn:hover {
+  background: var(--c-white);
+  color: var(--c-black);
+}
+
+@media (max-width: 720px) {
+  .pair {
+    grid-template-columns: 1fr;
+  }
+  .req {
+    text-align: left;
+  }
+}

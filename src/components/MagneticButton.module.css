@@ -1,0 +1,129 @@
+.wrap {
+  display: inline-block;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-4);
+  overflow: hidden;
+  isolation: isolate;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.5s var(--ease-out), border-color 0.5s var(--ease-out);
+}
+
+.m {
+  min-height: 56px;
+  padding: 0 var(--s-3);
+  font-size: 13px;
+}
+
+.l {
+  min-height: 72px;
+  padding: 0 var(--s-4);
+  font-size: 14px;
+  gap: var(--s-6);
+}
+
+@media (min-width: 1200px) {
+  .l {
+    min-height: 84px;
+    padding: 0 var(--s-5);
+    font-size: 15px;
+  }
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translateY(101%);
+  transition: transform 0.6s var(--ease-out);
+}
+
+.label,
+.arrow {
+  position: relative;
+}
+
+.arrow {
+  display: inline-grid;
+  overflow: hidden;
+  width: 1.15em;
+  height: 1.15em;
+  font-size: 1.15em;
+}
+
+.arrowA,
+.arrowB {
+  grid-area: 1 / 1;
+  transition: translate 0.55s var(--ease-out);
+}
+
+.arrowB {
+  translate: -120% 0;
+}
+
+.button:hover .fill,
+.button:focus-visible .fill {
+  transform: translateY(0);
+}
+
+.button:hover .arrowA,
+.button:focus-visible .arrowA {
+  translate: 120% 0;
+}
+
+.button:hover .arrowB,
+.button:focus-visible .arrowB {
+  translate: 0 0;
+}
+
+/* Solid: warm white slab, accent rises through it. */
+.solid {
+  background: var(--c-white);
+  color: var(--c-black);
+}
+.solid .fill {
+  background: var(--c-accent);
+}
+
+/* Line: hairline frame, warm white rises and inverts the text. */
+.line {
+  border: 1px solid var(--c-line-strong);
+  color: var(--c-white);
+}
+.line .fill {
+  background: var(--c-white);
+}
+.line:hover,
+.line:focus-visible {
+  color: var(--c-black);
+  border-color: var(--c-white);
+}
+
+/* Ink: for light sections. */
+.ink {
+  background: var(--c-black);
+  color: var(--c-white);
+}
+.ink .fill {
+  background: var(--c-accent);
+}
+.ink:hover,
+.ink:focus-visible {
+  color: var(--c-black);
+}
+
+@media (max-width: 640px) {
+  .l {
+    min-height: 64px;
+    gap: var(--s-4);
+  }
+}

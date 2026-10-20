@@ -1,0 +1,12 @@
+.mask {
+  display: block;
+  overflow: hidden;
+  /* Keep descenders and accents inside the mask at tight line-heights. */
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.line {
+  display: inline-block;
+  will-change: transform;
+}

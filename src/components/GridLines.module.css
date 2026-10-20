@@ -1,0 +1,28 @@
+.lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.col {
+  display: block;
+  height: 100%;
+  border-left: 1px solid rgba(244, 243, 239, 0.05);
+  transform-origin: top center;
+}
+
+.col:last-child {
+  border-right: 1px solid rgba(244, 243, 239, 0.05);
+}
+
+:global(.light) .col {
+  border-color: rgba(11, 11, 11, 0.06);
+}
+
+@media (max-width: 720px) {
+  /* Four visible columns on phones — twelve hairlines turn into noise. */
+  .col:not(:nth-child(3n + 1)):not(:last-child) {
+    border-left-color: transparent;
+  }
+}

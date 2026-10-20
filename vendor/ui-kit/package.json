@@ -1,0 +1,21 @@
+{
+  "name": "ui-kit",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Reusable behavior-first React component library for premium Vite sites — layout, motion, image/text effects, and navigation primitives.",
+  "main": "./dist/ui-kit.js",
+  "module": "./dist/ui-kit.js",
+  "style": "./dist/ui-kit.css",
+  "exports": {
+    ".": {
+      "import": "./dist/ui-kit.js"
+    },
+    "./style.css": "./dist/ui-kit.css"
+  },
+  "peerDependencies": {
+    "framer-motion": "^13.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

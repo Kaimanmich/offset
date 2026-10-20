@@ -1,0 +1,21 @@
+.swatches {
+  display: flex;
+}
+
+.swatches li {
+  width: 22px;
+  height: 22px;
+  background: var(--c);
+  outline: 1px solid var(--c-line-strong);
+  outline-offset: -1px;
+}
+
+/* Each chip overlaps the last by a few pixels — set off-register. */
+.swatches li + li {
+  margin-left: -4px;
+  transform: translateY(3px);
+}
+
+.swatches li:nth-child(odd) + li {
+  transform: translateY(-3px);
+}

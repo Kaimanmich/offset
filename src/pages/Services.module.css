@@ -1,0 +1,199 @@
+.heroShift {
+  padding-left: 1.2em;
+}
+
+.list {
+  border-top: 1px solid var(--c-line);
+}
+
+/* ---- Monthly running costs ----------------------------------------------- */
+
+.monthly {
+  position: relative;
+  padding-top: clamp(96px, 11vw, 200px);
+}
+
+.monthlyTop {
+  margin-top: clamp(40px, 5vw, 80px);
+  align-items: end;
+  row-gap: var(--s-4);
+}
+
+.monthlyTitle {
+  grid-column: 1 / span 6;
+  font-size: clamp(56px, 8.4vw, 164px);
+  font-weight: 800;
+}
+
+.monthlyLead {
+  grid-column: 8 / span 5;
+  max-width: 42ch;
+}
+
+.monthlyList {
+  margin-top: clamp(48px, 6vw, 96px);
+  border-top: 1px solid var(--c-line);
+}
+
+.monthlyItem {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  border-right: 1px solid var(--c-line);
+}
+
+.monthlyItem:last-child {
+  border-right: 0;
+}
+
+/* The fuller plan is set on paper and dropped a step — offset, not boxed. */
+.monthlyFeatured {
+  margin-top: var(--s-6);
+}
+
+.monthlyIncludes {
+  border-top: 1px solid var(--c-line);
+  margin-top: var(--s-1);
+}
+
+.monthlyIncludes li {
+  padding-block: 10px;
+  border-bottom: 1px solid var(--c-line);
+  font-size: 16px;
+}
+
+.monthlyIncludes li::before {
+  content: '+ ';
+  font-family: var(--f-mono);
+  color: var(--c-gray);
+}
+
+.monthlyBtn {
+  margin-top: var(--s-2);
+}
+
+.heroCta {
+  grid-column: 7 / span 6;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+}
+
+.heroLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.monthlyName {
+  font-size: clamp(36px, 4vw, 72px);
+  font-weight: 700;
+  font-stretch: 75%;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.monthlyPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.monthlyAmount {
+  font-size: clamp(32px, 3vw, 56px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.monthlyText {
+  max-width: 30ch;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .monthlyTitle,
+  .monthlyLead {
+    grid-column: 1 / -1;
+  }
+  .monthlyItem {
+    grid-column: 1 / -1;
+    border-right: 0;
+  }
+  .monthlyFeatured {
+    margin-top: var(--s-3);
+  }
+  .heroCta {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---- One-off add-ons ----------------------------------------------------- */
+
+.addons {
+  position: relative;
+  padding-block: clamp(80px, 9vw, 160px);
+}
+
+.addonsGrid {
+  opacity: 0.6;
+}
+
+.addonsBody {
+  position: relative;
+  margin-top: clamp(32px, 4vw, 64px);
+  row-gap: var(--s-5);
+  align-items: start;
+}
+
+.addonsLead {
+  grid-column: 1 / span 4;
+  max-width: 18ch;
+  color: var(--c-gray);
+}
+
+.addonsList {
+  grid-column: 6 / span 7;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--gap);
+}
+
+.addonsList li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-2);
+  padding-block: 16px;
+  border-bottom: 1px solid var(--c-line);
+  font-size: 18px;
+}
+
+@media (max-width: 900px) {
+  .addonsLead {
+    grid-column: 1 / -1;
+  }
+  .addonsList {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .addonsList {
+    grid-template-columns: 1fr;
+  }
+  .heroShift {
+    padding-left: 0.4em;
+  }
+}
+
+/* Legal price note under the package list and the monthly plans. */
+.priceNote {
+  padding-block: var(--s-3);
+}

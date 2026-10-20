@@ -1,0 +1,6 @@
+.screen {
+  position: relative;
+  border: 1px solid var(--c-line-strong);
+  background: var(--c-off);
+  color: var(--c-white);
+}

@@ -1,0 +1,40 @@
+.sheet {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--c-black);
+}
+
+.word {
+  display: inline-flex;
+  align-items: flex-start;
+  font-size: clamp(32px, 9vw, 170px);
+  font-weight: 800;
+  font-stretch: 125%;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+}
+
+.set {
+  transform: translate(0.06em, 0.22em);
+}
+
+.bl,
+.br {
+  position: absolute;
+  bottom: calc(clamp(28px, 4vw, 64px) + 12px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bl {
+  left: calc(clamp(28px, 4vw, 64px) + 12px);
+}
+
+.br {
+  right: calc(clamp(28px, 4vw, 64px) + 12px);
+}

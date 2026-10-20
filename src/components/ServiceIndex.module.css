@@ -1,0 +1,131 @@
+.list {
+  position: relative;
+  border-top: 1px solid var(--c-line);
+}
+
+.row {
+  position: relative;
+  border-bottom: 1px solid var(--c-line);
+  transition: opacity 0.5s var(--ease-out);
+}
+
+.link {
+  position: relative;
+  align-items: center;
+  padding-block: clamp(18px, 2.2vw, 30px);
+  transition: padding 0.6s var(--ease-out);
+  isolation: isolate;
+}
+
+/* Row wash rises from the baseline. */
+.link::before {
+  content: '';
+  position: absolute;
+  inset: 0 calc(-1 * var(--gutter));
+  z-index: -1;
+  background: #e8e7e1;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.num {
+  grid-column: 1;
+  justify-self: start;
+  padding: 3px 5px;
+  transition: transform 0.6s var(--ease-out), background-color 0.3s ease;
+}
+
+.title {
+  grid-column: 2 / span 7;
+  font-size: clamp(34px, 5.6vw, 108px);
+  font-weight: 600;
+  font-stretch: 75%;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.price {
+  grid-column: 9 / span 3;
+  justify-self: end;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: clamp(18px, 1.5vw, 26px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.arrow {
+  grid-column: 12;
+  justify-self: end;
+  display: inline-flex;
+  font-size: clamp(22px, 2vw, 34px);
+  opacity: 0;
+  transform: translateX(-16px) rotate(-45deg);
+  transition: opacity 0.4s ease, transform 0.6s var(--ease-out);
+}
+
+/* ---- Active row --------------------------------------------------------- */
+
+.hasActive .row:not(.active) {
+  opacity: 0.32;
+}
+
+.active .link {
+  padding-block: clamp(26px, 3.2vw, 46px);
+}
+
+.active .link::before {
+  transform: scaleY(1);
+}
+
+.active .num {
+  background: var(--c-accent);
+  transform: translateX(12px);
+}
+
+.active .title {
+  transform: translateX(clamp(12px, 2vw, 36px));
+}
+
+.active .arrow {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 720px) {
+  .link {
+    grid-template-columns: auto 1fr auto;
+    row-gap: 6px;
+  }
+  .num {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    margin-top: 4px;
+  }
+  .title {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: clamp(30px, 9.4vw, 52px);
+  }
+  .price {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+    font-size: 15px;
+  }
+  .arrow {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: center;
+    opacity: 1;
+    transform: rotate(-45deg);
+  }
+  .hasActive .row:not(.active) {
+    opacity: 1;
+  }
+}
